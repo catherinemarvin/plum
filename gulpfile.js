@@ -12,4 +12,4 @@ gulp.task("babel", function () {
   .pipe(gulp.dest("dist/"));
 });
 
-gulp.task("default", ["webserver"]);
+gulp.task("default", ["babel", "webserver"]);
