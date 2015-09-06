@@ -20,5 +20,6 @@ class BpmCounter {
     let timeDifferenceInMS = currentTime - this.lastTappedTime;
 
     this.bpm = this.numTaps / (timeDifferenceInMS / 1000);
+    console.log("Tock!");
   }
 }

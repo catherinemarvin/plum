@@ -3,13 +3,19 @@ var gulp = require("gulp"),
   babel = require("gulp-babel");
 
 gulp.task("webserver", function () {
-  connect.server();
+  connect.server({
+    livereload: true,
+  });
 });
 
 gulp.task("babel", function () {
-  return gulp.src("src/js/bpm-counter.js")
+  gulp.src("src/js/*.js")
   .pipe(babel())
   .pipe(gulp.dest("dist/"));
 });
 
-gulp.task("default", ["babel", "webserver"]);
+gulp.task("watch", function () {
+  gulp.watch("src/js/*.js", ["babel"]);
+});
+
+gulp.task("default", ["babel", "webserver", "watch"]);

@@ -7,17 +7,31 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 var BpmCounter = (function () {
   function BpmCounter() {
     _classCallCheck(this, BpmCounter);
+
+    this.numTaps = 0;
+    this.bpm = 0;
   }
 
   _createClass(BpmCounter, [{
     key: "start",
     value: function start() {
       console.log("Starting timer");
+      this.numTaps = 1;
+
+      this.lastTappedTime = new Date();
     }
   }, {
     key: "tick",
     value: function tick() {
       console.log("Tick!");
+      this.numTaps++;
+
+      var currentTime = new Date();
+
+      var timeDifferenceInMS = currentTime - this.lastTappedTime;
+
+      this.bpm = this.numTaps / (timeDifferenceInMS / 1000);
+      console.log("Tock!");
     }
   }]);
 
