@@ -1,6 +1,7 @@
 var gulp = require("gulp"),
   connect = require("gulp-connect"),
-  babel = require("gulp-babel");
+  babel = require("gulp-babel"),
+  react = require("gulp-react");
 
 gulp.task("webserver", function () {
   connect.server({
@@ -11,6 +12,12 @@ gulp.task("webserver", function () {
 gulp.task("babel", function () {
   gulp.src("src/js/*.js")
   .pipe(babel())
+  .pipe(gulp.dest("dist/"));
+});
+
+gulp.task("react", function () {
+  gulp.src("src/jsx/*.jsx")
+  .pipe(react())
   .pipe(gulp.dest("dist/"));
 });
 
