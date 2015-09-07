@@ -1,4 +1,4 @@
-var HelloWorld = React.createClass({
+var BpmTable = React.createClass({
   render: function () {
     return (
       <p>Hello</p>
@@ -6,7 +6,12 @@ var HelloWorld = React.createClass({
   }
 });
 
+var BPM_INFO = {
+  bpm: 120,
+  timingTaps: 20,
+};
+
 React.render(
-  <HelloWorld />,
+  <BpmTable bpm_info={BPM_INFO} />,
   document.getElementById("content")
-)
+);
