@@ -23,6 +23,7 @@ gulp.task("react", function () {
 
 gulp.task("watch", function () {
   gulp.watch("src/js/*.js", ["babel"]);
+  gulp.watch("src/jsx/*.jsx", ["react"]);
 });
 
-gulp.task("default", ["babel", "webserver", "watch"]);
+gulp.task("default", ["babel", "react", "webserver", "watch"]);
