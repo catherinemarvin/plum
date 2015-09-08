@@ -1,7 +1,10 @@
 var BpmTable = React.createClass({
   render: function () {
     return (
-      <p>Hello</p>
+      <div>
+        <p>BPM: {this.props.bpm_info.bpm}</p>
+        <p>Timing Taps: {this.props.bpm_info.timingTaps }</p>
+      </div>
     );
   }
 });

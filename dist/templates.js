@@ -1,7 +1,10 @@
 var BpmTable = React.createClass({displayName: "BpmTable",
   render: function () {
     return (
-      React.createElement("p", null, "Hello")
+      React.createElement("div", null, 
+        React.createElement("p", null, "BPM: ", this.props.bpm_info.bpm), 
+        React.createElement("p", null, "Timing Taps: ", this.props.bpm_info.timingTaps)
+      )
     );
   }
 });
