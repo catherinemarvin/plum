@@ -1,7 +1,8 @@
 var gulp = require("gulp"),
   connect = require("gulp-connect"),
   babel = require("gulp-babel"),
-  react = require("gulp-react");
+  react = require("gulp-react"),
+  sass = require("gulp-sass");
 
 gulp.task("webserver", function () {
   connect.server({
@@ -21,9 +22,16 @@ gulp.task("react", function () {
   .pipe(gulp.dest("dist/"));
 });
 
+gulp.task("sass", function () {
+  gulp.src("src/css/*.scss")
+  .pipe(sass().on("error", sass.logError))
+  .pipe(gulp.dest("dist/"));
+});
+
 gulp.task("watch", function () {
   gulp.watch("src/js/*.js", ["babel"]);
   gulp.watch("src/jsx/*.jsx", ["react"]);
+  gulp.watch("src/css/*.scss", ["sass"]);
 });
 
-gulp.task("default", ["babel", "react", "webserver", "watch"]);
+gulp.task("default", ["babel", "react", "sass", "webserver", "watch"]);
