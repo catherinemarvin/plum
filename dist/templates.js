@@ -9,6 +9,15 @@ var BpmTable = React.createClass({displayName: "BpmTable",
         React.createElement("p", null, "Timing Taps: ", this.props.bpm_info.timingTaps)
       )
     );
+  },
+  componentDidMount: function () {
+    $(document.body).on("keydown", this.handleKeydown);
+  },
+  componentWillUnmount: function () {
+    $(document.body).off("keydown", this.handleKeydown);
+  },
+  handleKeydown: function (e) {
+    console.log(e);
   }
 });
 
