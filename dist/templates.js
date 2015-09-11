@@ -1,4 +1,7 @@
 var BpmTable = React.createClass({displayName: "BpmTable",
+  propTypes: {
+    bpm_info: React.PropTypes.object.isRequired,
+  },
   render: function () {
     return (
       React.createElement("div", null, 
