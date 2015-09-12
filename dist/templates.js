@@ -10,15 +10,6 @@ var BpmTable = React.createClass({displayName: "BpmTable",
       )
     );
   },
-  componentDidMount: function () {
-    $(document.body).on("keydown", this.handleKeydown);
-  },
-  componentWillUnmount: function () {
-    $(document.body).off("keydown", this.handleKeydown);
-  },
-  handleKeydown: function (e) {
-    console.log(e);
-  }
 });
 
 var BPM_INFO = {
@@ -26,7 +17,7 @@ var BPM_INFO = {
   timingTaps: 20,
 };
 
-React.render(
+var bpmTable = React.render(
   React.createElement(BpmTable, {bpm_info: BPM_INFO}),
   document.getElementById("content")
 );
