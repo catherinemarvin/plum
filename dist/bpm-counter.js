@@ -10,20 +10,19 @@ var BpmCounter = (function () {
 
     this.numTaps = 0;
     this.bpm = 0;
+    this.lastTappedTime = new Date();
   }
 
   _createClass(BpmCounter, [{
-    key: "start",
-    value: function start() {
-      console.log("Starting timer");
-      this.numTaps = 1;
-
+    key: "restart",
+    value: function restart() {
+      this.numTaps = 0;
+      this.bpm = 0;
       this.lastTappedTime = new Date();
     }
   }, {
     key: "tick",
     value: function tick() {
-      console.log("Tick!");
       this.numTaps++;
 
       var currentTime = new Date();
@@ -31,7 +30,6 @@ var BpmCounter = (function () {
       var timeDifferenceInMS = currentTime - this.lastTappedTime;
 
       this.bpm = this.numTaps / (timeDifferenceInMS / 1000);
-      console.log("Tock!");
     }
   }]);
 
