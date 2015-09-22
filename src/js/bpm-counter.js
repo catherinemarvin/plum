@@ -21,6 +21,10 @@ class BpmCounter {
 
     let timeDifferenceInMS = currentTime - this.startTapTime;
 
-    this.bpm = this.numTaps / (timeDifferenceInMS / 1000) * 60;
+    if (timeDifferenceInMS === 0) {
+      this.bpm = "First tap";
+    } else {
+      this.bpm = this.numTaps / (timeDifferenceInMS / 1000) * 60;
+    }
   }
 }
