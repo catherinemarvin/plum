@@ -2,6 +2,12 @@ var BpmTable = React.createClass({
   propTypes: {
     bpm_info: React.PropTypes.object.isRequired,
   },
+  componentDidMount: function () {
+    $(document.body).on("keydown", this.handleKeyDown);
+  },
+  componentWillUnmount: function () {
+    $(document.body).off("keydown", this.handleKeyDown);
+  },
   render: function () {
     return (
       <div>
@@ -9,6 +15,9 @@ var BpmTable = React.createClass({
         <p>Timing Taps: {this.props.bpm_info.timingTaps }</p>
       </div>
     );
+  },
+  handleKeyDown: function () {
+    console.log("key down");
   },
 });
 
