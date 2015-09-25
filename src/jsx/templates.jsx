@@ -44,7 +44,7 @@ var BpmTable = React.createClass({
     if (timeDifferenceInMS === 0) {
       bpm = "First Tap";
     } else {
-      bpm = timingTaps / (timeDifferenceInMS / 1000) * 60;
+      bpm = Math.round(timingTaps / (timeDifferenceInMS / 1000) * 60);
     }
 
     this.setState({
