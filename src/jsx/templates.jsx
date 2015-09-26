@@ -5,12 +5,14 @@ var BpmTable = React.createClass({
       React.PropTypes.number,
     ]).isRequired,
     initialTimingTaps: React.PropTypes.number.isRequired,
+    initialSecondsToReset: React.PropTypes.number.isRequired,
   },
   getInitialState: function () {
     return {
       bpm: this.props.initialBpm,
       timingTaps: this.props.initialTimingTaps,
       startTapTime: null,
+      secondsToReset: this.props.initialSecondsToReset,
     };
   },
   componentDidMount: function () {
@@ -57,8 +59,9 @@ var BpmTable = React.createClass({
 
 var initialBpm = "Tap to begin!";
 var initialTimingTaps = 0;
+var initialSecondsToReset = 2;
 
 var bpmTable = React.render(
-  <BpmTable initialBpm={initialBpm} initialTimingTaps={initialTimingTaps} />,
+  <BpmTable initialBpm={initialBpm} initialTimingTaps={initialTimingTaps} initialSecondsToReset ={initialSecondsToReset} />,
   document.getElementById("content")
 );
