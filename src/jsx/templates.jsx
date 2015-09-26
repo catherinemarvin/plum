@@ -13,6 +13,7 @@ var BpmTable = React.createClass({
       timingTaps: this.props.initialTimingTaps,
       startTapTime: null,
       secondsToReset: this.props.initialSecondsToReset,
+      lastTapTime: null,
     };
   },
   componentDidMount: function () {
@@ -40,10 +41,20 @@ var BpmTable = React.createClass({
 
     var currentTime = new Date();
 
+
     var timeDifferenceInMS = currentTime - startTapTime;
 
+    var secondsToReset = this.state.secondsToReset;
+
+    var lastTapTime = this.state.lastTapTime ? this.state.lastTapTime : currentTime;
+    var secondsSinceLastTap = currentTime - lastTapTime;
+    if (secondsSinceLastTap >= secondsToReset * 1000) {
+      this.reset();
+      return;
+    }
+
     var bpm;
-    if (timeDifferenceInMS === 0) {
+    if (timingTaps === 1) {
       bpm = "First Tap";
     } else {
       bpm = Math.round(timingTaps / (timeDifferenceInMS / 1000) * 60);
@@ -53,6 +64,16 @@ var BpmTable = React.createClass({
       bpm: bpm,
       timingTaps: timingTaps,
       startTapTime: startTapTime,
+      lastTapTime: currentTime,
+    });
+  },
+  reset: function () {
+    var currentTime = new Date();
+    this.setState({
+      bpm: "First Tap",
+      timingTaps: 1,
+      startTapTime: currentTime,
+      lastTapTime: currentTime,
     });
   },
 });
