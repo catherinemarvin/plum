@@ -19,6 +19,10 @@ gulp.task("babel", function () {
 gulp.task("react", function () {
   gulp.src("src/jsx/*.jsx")
   .pipe(react())
+  .on("error", function (err) {
+    console.log(err);
+    this.end();
+  })
   .pipe(gulp.dest("dist/"));
 });
 
