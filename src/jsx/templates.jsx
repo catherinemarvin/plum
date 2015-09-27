@@ -78,7 +78,9 @@ var BpmTable = React.createClass({
     });
   },
   handleResetSecondsChange: function (event) {
-    console.log(event);
+    this.setState({
+      secondsToReset: event.target.value,
+    });
   },
 });
 
