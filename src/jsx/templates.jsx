@@ -26,8 +26,8 @@ var BpmTable = React.createClass({
     return (
       <div>
         <p>BPM: {this.state.bpm}</p>
-        <p>Timing Taps: {this.state.timingTaps }</p>
-        <input type="number" value={this.state.secondsToReset} onChange={this.handleResetSecondsChange} />
+        <p>Timing Taps: {this.state.timingTaps}</p>
+        <p>Seconds till reset: <input type="number" value={this.state.secondsToReset} onChange={this.handleResetSecondsChange} /></p>
       </div>
     );
   },
