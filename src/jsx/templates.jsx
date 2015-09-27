@@ -17,10 +17,10 @@ var BpmTable = React.createClass({
     };
   },
   componentDidMount: function () {
-    $(document.body).on("keydown", this.tick);
+    $(document.body).on("keypress", this.tick);
   },
   componentWillUnmount: function () {
-    $(document.body).off("keydown", this.tick);
+    $(document.body).off("keypress", this.tick);
   },
   render: function () {
     return (
