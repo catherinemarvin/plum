@@ -92,3 +92,50 @@ var bpmTable = React.render(
   <BpmTable initialBpm={initialBpm} initialTimingTaps={initialTimingTaps} initialSecondsToReset ={initialSecondsToReset} />,
   document.getElementById("content")
 );
+
+var About = React.createClass({
+  render: function () {
+    return (
+      <div>About</div>
+    );
+  }
+});
+
+var App = React.createClass({
+  getInitialState: function () {
+    return {
+      route: window.location.hash.substr(1),
+    }
+  },
+  componentDidMount: function () {
+    var self = this;
+    window.addEventListener("hashchange", function () {
+      self.setState({
+        route: window.location.hash.substr(1),
+      });
+    });
+  },
+  render: function () {
+    var route = this.state.route;
+    console.log(route);
+
+    var element;
+    if (route === "/about") {
+      element = <About />
+    } else {
+      element = <BpmTable initialBpm={initialBpm} initialTimingTaps={initialTimingTaps} initialSecondsToReset ={initialSecondsToReset} />
+    }
+
+    return (
+      <div>
+        <h1>App</h1>
+        <ul>
+          <li><a href="#/about">About</a></li>
+        </ul>
+        {element}
+      </div>
+    )
+  },
+});
+
+React.render(<App />, document.body);
