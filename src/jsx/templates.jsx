@@ -25,7 +25,7 @@ $(document).ready(function () {
     },
     render: function () {
       return (
-        <div>
+        <div className="jumbotron">
           <p>BPM: {this.state.bpm}</p>
           <p>Timing Taps: {this.state.timingTaps}</p>
           <p>Seconds till reset: <input type="number" value={this.state.secondsToReset} onChange={this.handleResetSecondsChange} /></p>
@@ -124,21 +124,7 @@ $(document).ready(function () {
 
       return (
         <div>
-          <nav className="navbar navbar-inverse navbar-fixed-top">
-            <div className="container">
-              <div id="navbar" className="navbar-collapse collapse">
-                <ul className="nav navbar-nav pull-right">
-                  <li className="active">
-                    <a href="#">BPM Counter</a>
-                  </li>
-                  <li>
-                    <a href="#/about">About</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </nav>
-          <div className="content jumbotron">
+          <div className="container">
             {element}
           </div>
         </div>
@@ -146,5 +132,5 @@ $(document).ready(function () {
     },
   });
 
-  React.render(<App />, document.body);
+  React.render(<App />, document.getElementById("content"));
 });
