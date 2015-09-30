@@ -138,7 +138,7 @@ $(document).ready(function () {
               </div>
             </div>
           </nav>
-          <div className="content">
+          <div className="content jumbotron">
             {element}
           </div>
         </div>
